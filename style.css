@@ -87,6 +87,7 @@ em{font-style:normal;}
 
 .sp{display:none;}
 .pc{display:inline;}
+.nw{white-space:nowrap;}
 
 /* ---------- shared type ---------- */
 
@@ -748,11 +749,43 @@ blockquote p + p{margin-top:6px !important;}
   color:var(--ink);
   overflow:hidden;
 }
+.book-head{
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-bottom:clamp(44px,6vw,68px);
+}
+.book-head .section-title{color:#0f1a2e;margin-top:14px;}
+.book-head .orn{margin:22px 0 20px;}
+.book-head .lead{max-width:680px;color:#5c6577;}
 .book-grid{
   display:grid;
   grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
   gap:clamp(40px,6vw,80px);
   align-items:center;
+}
+.book-volumes{
+  display:flex;
+  flex-direction:column;
+  gap:clamp(52px,7vw,92px);
+}
+.book-vol + .book-vol{position:relative;}
+.book-vol + .book-vol::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;
+  top:calc(-1 * clamp(26px,3.5vw,46px));
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(27,39,64,.16) 20%,rgba(212,175,55,.45) 50%,rgba(27,39,64,.16) 80%,transparent);
+}
+.vol-num{
+  font-family:var(--sans);
+  font-size:10px;
+  letter-spacing:.36em;
+  text-transform:uppercase;
+  color:var(--gold-d);
+  margin-bottom:10px;
 }
 .book-cover{
   position:relative;
@@ -787,6 +820,7 @@ blockquote p + p{margin-top:6px !important;}
   font-size:clamp(.95rem,3.9vw,1.1rem);
   letter-spacing:.08em;
   color:#2a3448;
+  word-break:auto-phrase;
 }
 .book-desc{
   margin-top:20px;
@@ -837,6 +871,21 @@ blockquote p + p{margin-top:6px !important;}
   font-size:12px !important;
   line-height:1.9;
   color:#6b7385 !important;
+}
+.book-note--foot{
+  margin-top:clamp(40px,5vw,60px);
+  padding-top:22px;
+  border-top:1px solid rgba(27,39,64,.12);
+  text-align:center;
+  font-size:11.5px !important;
+  line-height:2;
+  letter-spacing:.05em;
+}
+.badge--ku{
+  font-size:10.5px;
+  letter-spacing:.1em;
+  padding:7px 13px;
+  margin-top:22px;
 }
 .book-buy{
   display:flex;
@@ -991,6 +1040,7 @@ blockquote p + p{margin-top:6px !important;}
   .about-grid{grid-template-columns:1fr;gap:44px;}
   .about-visual{position:static;max-width:260px;margin-inline:auto;}
   .book-grid{grid-template-columns:1fr;gap:48px;}
+  .book-vol{gap:28px;}
   .book-cover{width:min(300px,70%);}
   .book-text{text-align:left;}
 }
@@ -1034,11 +1084,24 @@ blockquote p + p{margin-top:6px !important;}
   .ln-body{min-width:0;display:block;}
   .ln-arrow{display:block;margin:6px 0 0;text-align:right;}
 
-  .book-title{letter-spacing:.16em;}
-  .book-cover{width:min(260px,74%);}
+  .book-head{margin-bottom:38px;}
+  .book-head .section-title br,
+  .book-head .lead br{display:none;}
+  .book-head .orn{margin:18px 0 16px;}
+  .book-volumes{gap:50px;}
+  .book-vol + .book-vol::before{top:-25px;}
+  .book-vol .book-cover img{transform:rotate(-1.2deg);}
+  .book-title{letter-spacing:.16em;font-size:1.6rem;}
+  .book-sub{font-size:.9rem;line-height:1.95;}
+  .book-desc{font-size:.84rem;line-height:2.05;margin-top:16px;}
+  .book-cover{width:min(240px,70%);}
   .book-cover::before{inset:-10px;transform:translate(8px,8px);}
-  .book-buy{flex-direction:column;gap:10px;}
+  .chips{gap:9px;margin-top:22px;}
+  .chips li{padding:8px 14px;}
+  .badge{margin-top:20px;font-size:10px;letter-spacing:.1em;padding:7px 12px;line-height:1.7;}
+  .book-buy{flex-direction:column;gap:10px;margin-top:20px;}
   .book-buy .btn{width:100%;padding:16px 18px;font-size:12px;letter-spacing:.1em;white-space:normal;}
+  .book-note--foot{margin-top:36px;padding-top:18px;font-size:11px !important;text-align:left;}
 
   .social a,.social .is-soon{gap:16px;padding:20px 4px;}
   .ico{width:38px;height:38px;}
